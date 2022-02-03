@@ -1,16 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+    sans-serif;
 }
 
 * {
   box-sizing: border-box;
+}
+
+@layer components {
+  /* General */
+  .divider {
+    @apply w-20 h-1 mb-2 bg-whiteVar;
+  }
+  .button {
+    @apply mt-6 py-2 px-6 bg-transparent border-2 cursor-pointer text-lg font-semibold
+    hover:bg-whiteVar hover:text-secondary transition-all duration-200
+    lg:py-6 lg:px-10 lg:text-xl;
+  }
+
+  /* Every Page */
+  .pageContainer {
+    @apply min-h-screen px-4 py-10 bg-home-bg bg-cover text-whiteVar 
+    lg:px-10;
+  }
+
+  /* Banner */
+  .bannerContainer {
+    @apply pl-4;
+  }
+  .bannerTitle {
+    @apply font-bold text-3xl
+    lg:text-5xl;
+  }
+  .bannerText {
+    @apply mt-4 text-lg mb-2
+    lg:text-xl;
+  }
+
+  /* Cards */
+  .cardsContainer {
+    @apply mt-20 flex flex-col items-center justify-center
+    lg:mt-40;
+  }
+  .cardsLayout {
+    @apply grid grid-cols-1 gap-x-5 gap-y-10 items-center justify-center
+    md:grid-cols-2 
+    lg:grid-cols-3;
+  }
+  .cardsLayoutHeader {
+    @apply mb-10  font-semibold text-3xl
+    lg:text-5xl;
+  }
+
+  /* Single Card */
+  .cardLink {
+    @apply m-auto flex flex-col items-center justify-center bg-transparent text-whiteVar;
+  }
+  .cardHeader {
+    @apply p-2 capitalize font-semibold text-lg border border-b-0 w-full text-center;
+  }
+  .cardImage {
+    @apply object-cover;
+  }
+
+  /* Single Store Page */
+  .backLink {
+    @apply mb-10 font-semibold text-2xl flex w-48 items-center justify-between cursor-pointer hover:text-secondary transition-all;
+  }
+  .storeContainer {
+    @apply grid grid-cols-1 gap-5
+    lg:grid-cols-2;
+  }
+  .storeHeader {
+    @apply ml-4;
+  }
+  .storeHeaderText {
+    @apply mb-4 text-3xl font-semibold;
+  }
+  .storeInfo {
+    @apply text-whiteVar bg-secondary/60 p-4;
+  }
+  .storeData {
+    @apply mb-4 text-lg font-semibold flex justify-start items-center
+    lg:text-xl;
+  }
+  .storeDataText {
+    @apply ml-10;
+  }
+  .storeImg {
+    @apply object-cover;
+  }
 }
