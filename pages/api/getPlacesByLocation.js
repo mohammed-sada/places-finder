@@ -12,9 +12,7 @@ export default async function getPlacesByLocation(req, res) {
   } catch (error) {
     res.status(500).json({
       data: null,
-      message: 'Something went wrong!'
-    }
-    );
-
+      error
+    });
   }
 }

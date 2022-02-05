@@ -23,6 +23,7 @@ body {
   .button {
     @apply mt-6 py-2 px-6 bg-transparent border-2 cursor-pointer text-lg font-semibold
     hover:bg-whiteVar hover:text-secondary transition-all duration-200
+    disabled:opacity-30 disabled:cursor-wait hover:bg-transparent hover:text-whiteVar
     lg:py-6 lg:px-10 lg:text-xl;
   }
 

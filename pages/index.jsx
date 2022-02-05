@@ -7,6 +7,7 @@ import { fetchPlaces } from '../lib/coffee-stores';
 import { ACTION_TYPES, StoreContext } from '../context/StoreContext';
 
 export async function getStaticProps(context) {
+  // We surely know that the home page will always have these 6 coffee stores, so we pre-render them
   const coffeeStores = await fetchPlaces();
 
   return {
@@ -22,6 +23,7 @@ export default function Home(props) {
 
   const { latLong, localCoffeeStores } = state;
   useEffect(() => {
+    // Client Side Rendering because we don't know yet the location of the user, so we can't pre-render the data
     async function getLocalCoffeeStores(latLong) {
       try {
         const response = await fetch(
@@ -36,7 +38,8 @@ export default function Home(props) {
         console.log(error);
       }
     }
-    latLong && getLocalCoffeeStores(latLong); // because when the page first render it will get run even if we don't click the button
+    latLong && getLocalCoffeeStores(latLong);
+    // because when the page first render, the function will be called even if we don't click the button
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [latLong]);
@@ -53,7 +56,6 @@ export default function Home(props) {
           name='description'
           content='Coffee stores finder to find all of the coffee stores near your current loaction.'
         />
-        <link rel='icon' href='/favicon2.ico' />
       </Head>
 
       <main>
