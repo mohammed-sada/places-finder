@@ -73,7 +73,7 @@ export default function CoffeeStore(initialProps) {
   async function handleCreateCoffeeStore(coffeeStore) {
     const { id, name, address, street, imgUrl } = coffeeStore;
     try {
-      const response = await fetch('api/createCoffeeStore', {
+      const response = await fetch('/api/createCoffeeStore', {
         headers: {
           'Content-Type': 'application/json',
         },
