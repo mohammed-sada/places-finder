@@ -27,7 +27,7 @@ export default function Home(props) {
     async function getLocalCoffeeStores(latLong) {
       try {
         const response = await fetch(
-          `http://localhost:3000/api/getPlacesByLocation?latLong=${latLong}&query=${'coffee stores'}&limit=${10}`
+          `/api/getPlacesByLocation?latLong=${latLong}&query=${'coffee stores'}&limit=${10}`
         );
         const localStores = (await response.json()).data;
         dispatch({
