@@ -73,23 +73,20 @@ export default function CoffeeStore(initialProps) {
   async function handleCreateCoffeeStore(coffeeStore) {
     const { id, name, address, street, imgUrl } = coffeeStore;
     try {
-      const response = await fetch(
-        'http://localhost:3000/api/createCoffeeStore',
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          method: 'POST',
-          body: JSON.stringify({
-            id,
-            name,
-            address,
-            street,
-            voting: 0,
-            imgUrl,
-          }),
-        }
-      );
+      const response = await fetch('api/createCoffeeStore', {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        method: 'POST',
+        body: JSON.stringify({
+          id,
+          name,
+          address,
+          street,
+          voting: 0,
+          imgUrl,
+        }),
+      });
       const dbCoffeeStore = await response.json();
     } catch (error) {
       console.error(error);
