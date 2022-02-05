@@ -72,7 +72,6 @@ export default function CoffeeStore(initialProps) {
 
   async function handleCreateCoffeeStore(coffeeStore) {
     const { id, name, address, street, imgUrl } = coffeeStore;
-
     try {
       const response = await fetch(
         'http://localhost:3000/api/createCoffeeStore',
@@ -93,7 +92,7 @@ export default function CoffeeStore(initialProps) {
       );
       const dbCoffeeStore = await response.json();
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 
@@ -106,9 +105,12 @@ export default function CoffeeStore(initialProps) {
 
   useEffect(() => {
     if (data && data.data) {
-      data.data.imgUrl = JSON.parse(data.data.imgUrl);
-      setCoffeeStore(data.data);
-      setVotingCount(data.data.voting);
+      const record = {
+        ...data.data,
+        imgUrl: JSON.parse(data.data.imgUrl),
+      };
+      setCoffeeStore(record);
+      setVotingCount(record.voting);
     }
   }, [data]);
 
@@ -131,8 +133,7 @@ export default function CoffeeStore(initialProps) {
   };
 
   if (error) {
-    console.log(error);
-    return <h1>error</h1>;
+    console.error(error);
   }
 
   if (router.isFallback || !coffeeStore) {
